@@ -6,10 +6,16 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const registerUser = (e) => {
     e.preventDefault();
-    axios.get("/test");
+    axios.post("/register", {
+      name,
+      email,
+      password,
+    });
   };
+
   return (
     <div className="mt-4 flex items-center justify-around grow">
       <div className="mb-64">
