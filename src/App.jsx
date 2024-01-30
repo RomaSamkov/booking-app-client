@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import RegisterPage from "./pages/RegisterPage";
 import axios from "axios";
 import { UserContextProvider } from "./components/UserContext";
+import AccountPage from "./pages/AccountPage";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -20,6 +21,7 @@ function App() {
           <Route index element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/account" element={<AccountPage />} />
         </Route>
       </Routes>
     </UserContextProvider>
