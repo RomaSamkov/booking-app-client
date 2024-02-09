@@ -67,8 +67,8 @@ export default function PlacesPage() {
           <textarea />
           <h2 className="text-2xl mt-4">Perks</h2>
           <p className="text-sm text-gray-500">Write all perks</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-            <label>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mt-2">
+            <label className="flex border rounded-2xl p-4 gap-2 items-center cursor-pointer">
               <input type="checkbox" name="" id="" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ export default function PlacesPage() {
               </svg>
               <span>Wi-Fi</span>
             </label>
-            <label>
+            <label className="flex border rounded-2xl p-4 gap-2 items-center cursor-pointer">
               <input type="checkbox" name="" id="" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ export default function PlacesPage() {
               </svg>
               <span>Free parking</span>
             </label>
-            <label>
+            <label className="flex border rounded-2xl p-4 gap-2 items-center cursor-pointer">
               <input type="checkbox" name="" id="" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +122,7 @@ export default function PlacesPage() {
               </svg>
               <span>TV</span>
             </label>
-            <label>
+            <label className="flex border rounded-2xl p-4 gap-2 items-center cursor-pointer">
               <input type="checkbox" name="" id="" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@ export default function PlacesPage() {
               </svg>
               <span>Radio</span>
             </label>
-            <label>
+            <label className="flex border rounded-2xl p-4 gap-2 items-center cursor-pointer">
               <input type="checkbox" name="" id="" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +158,7 @@ export default function PlacesPage() {
               </svg>
               <span>Private entrance</span>
             </label>
-            <label>
+            <label className="flex border rounded-2xl p-4 gap-2 items-center cursor-pointer">
               <input type="checkbox" name="" id="" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -177,6 +177,29 @@ export default function PlacesPage() {
               <span>Sony Playstation</span>
             </label>
           </div>
+          <h2 className="text-2xl mt-4">Extra Info</h2>
+          <p className="text-sm text-gray-500">House rules and etc.</p>
+          <textarea />
+          <h2 className="text-2xl mt-4">Check in and out times</h2>
+          <p className="text-sm text-gray-500">
+            Write check in and out times and max guests
+          </p>
+          <div className="grid sm:grid-cols-3 gap-2">
+            <div>
+              <h3 className="mt-2 -mb-1">Check in time</h3>
+              <input type="text" placeholder="check in" />
+            </div>
+            <div>
+              <h3 className="mt-2 -mb-1">Check out time</h3>
+              <input type="text" placeholder="check out" />
+            </div>
+            <div>
+              <h3 className="mt-2 -mb-1">Max guests</h3>
+              <input type="text" placeholder="max guests" />
+            </div>
+          </div>
+
+          <button className="primary my-4">Save</button>
         </form>
       )}
     </div>
