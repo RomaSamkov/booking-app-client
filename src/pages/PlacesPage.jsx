@@ -29,6 +29,25 @@ export default function PlacesPage() {
     setPhotoLink("");
   }
 
+  function uploadPhoto(e) {
+    e.preventDefault();
+    const files = e.target.files;
+    const data = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      data.append("photos", files[i]);
+    }
+    axios
+      .post("/upload", data, {
+        headers: { "Content-type": "multipart/form-data" },
+      })
+      .then((response) => {
+        const { data: filenames } = response;
+        setAddedPhotos((prev) => {
+          return [...prev, ...filenames];
+        });
+      });
+  }
+
   return (
     <div>
       {action !== "new" && (
@@ -98,7 +117,15 @@ export default function PlacesPage() {
                   />
                 </div>
               ))}
-            <button className="flex items-center gap-1 justify-center border bg-transparent rounded-xl p-2 text-gray-600 text-2xl">
+            <label className="flex items-center cursor-pointer gap-1 justify-center border bg-transparent rounded-xl p-2 text-gray-600 text-2xl">
+              <input
+                onChange={uploadPhoto}
+                className="hidden"
+                type="file"
+                multiple
+                name=""
+                id=""
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -114,7 +141,7 @@ export default function PlacesPage() {
                 />
               </svg>
               Upload
-            </button>
+            </label>
           </div>
           <h2 className="text-2xl mt-4">Description</h2>
           <p className="text-sm text-gray-500">Write a description</p>
