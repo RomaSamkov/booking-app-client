@@ -35,9 +35,25 @@ export default function PlacesPage() {
           Add new place
         </Link>
       </div>
-      <div>
+      <div className="mt-4">
         {places.length > 0 &&
-          places.map((place) => <div key={place.id}>{place.title}</div>)}
+          places.map((place) => (
+            <Link
+              to={"/account/places/" + place._id}
+              className="flex cursor-pointer rounded-2xl bg-gray-100 p-4 gap-4"
+              key={place.id}
+            >
+              <div className="w-32 h-32 bg-gray-300 grow-0 shrink-0">
+                {place.length > 0 && (
+                  <img src={place.photos[0]} alt={place.title} />
+                )}
+              </div>
+              <div className="grow-0 shrink">
+                <h2 className="text-2xl">{place.title}</h2>
+                <p className="text-sm mt-2">{place.description}</p>
+              </div>
+            </Link>
+          ))}
       </div>
     </div>
   );
