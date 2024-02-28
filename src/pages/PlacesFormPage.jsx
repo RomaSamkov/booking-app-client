@@ -1,15 +1,15 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Perks from "./Perks";
 import PhotosUploader from "../components/PhotosUploader";
 import AccountNav from "../components/AccountNav";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 export default function PlacesFormPage() {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
-
   const [description, setDescription] = useState("");
   const [perks, setPerks] = useState([]);
   const [extraInfo, setExtraInfo] = useState("");
@@ -18,9 +18,27 @@ export default function PlacesFormPage() {
   const [maxGuests, setMaxGuests] = useState(1);
   const [redirect, setRedirect] = useState(false);
 
-  async function addNewPlace(e) {
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    axios.get("/places/" + id).then((response) => {
+      const { data } = response;
+      setTitle(data.title);
+      setAddress(data.address);
+      setAddedPhotos(data.photos);
+      setDescription(data.description);
+      setPerks(data.perks);
+      setExtraInfo(data.extraInfo);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setMaxGuests(data.maxGuests);
+    });
+  }, [id]);
+
+  async function savePlace(e) {
     e.preventDefault();
-    await axios.post("/places", {
+    const placeData = {
       title,
       address,
       addedPhotos,
@@ -30,8 +48,14 @@ export default function PlacesFormPage() {
       checkIn,
       checkOut,
       maxGuests,
-    });
-    setRedirect(true);
+    };
+    if (id) {
+      await axios.put("/places", id, ...placeData);
+      setRedirect(true);
+    } else {
+      await axios.post("/places", placeData);
+      setRedirect(true);
+    }
   }
 
   if (redirect) {
@@ -40,7 +64,7 @@ export default function PlacesFormPage() {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={addNewPlace}>
+      <form onSubmit={savePlace}>
         <h2 className="text-2xl mt-4">Title</h2>
         <p className="text-sm text-gray-500">Title for your appartment</p>
         <input
