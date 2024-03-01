@@ -50,7 +50,7 @@ export default function PlacesFormPage() {
       maxGuests,
     };
     if (id) {
-      await axios.put("/places", id, ...placeData);
+      await axios.put("/places", { id, ...placeData });
       setRedirect(true);
     } else {
       await axios.post("/places", placeData);
