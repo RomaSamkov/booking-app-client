@@ -41,7 +41,7 @@ export default function PlacesPage() {
             <Link
               to={"/account/places/" + place._id}
               className="flex cursor-pointer rounded-2xl bg-gray-100 p-4 gap-4"
-              key={place.id}
+              key={place._id}
             >
               <div className="flex w-32 h-32 bg-gray-300 grow-0 shrink-0">
                 {place.photos.length > 0 && (
