@@ -9,6 +9,7 @@ import { UserContextProvider } from "./components/UserContext";
 import AccountPage from "./pages/AccountPage";
 import PlacesPage from "./pages/PlacesPage";
 import PlacesFormPage from "./pages/PlacesFormPage";
+import PlacePage from "./pages/PlacePage";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/account/places" element={<PlacesPage />} />
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
+          <Route path="/place/:id" element={<PlacePage />} />
         </Route>
       </Routes>
     </UserContextProvider>
