@@ -29,6 +29,7 @@ export default function PlacePage() {
       </a>
       <div>
         <div>a</div>
+        <div>b</div>
       </div>
     </div>
   );
