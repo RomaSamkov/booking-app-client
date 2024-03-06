@@ -27,7 +27,9 @@ export default function PlacePage() {
       >
         {place.address}
       </a>
-      <div></div>
+      <div>
+        <div>a</div>
+      </div>
     </div>
   );
 }
