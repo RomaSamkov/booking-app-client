@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BookingWidget from "../components/BookingWidget";
 
 export default function PlacePage() {
   const { id } = useParams();
@@ -61,7 +62,7 @@ export default function PlacePage() {
   }
 
   return (
-    <div className="mt-4 bg-gray-100 -m-8 p-8">
+    <div className="mt-4 bg-gray-100 -m-8 pt-8">
       <h1 className="text-3xl">{place.title}</h1>
       <a
         className="flex gap-1 font-semibold underline my-3"
@@ -97,7 +98,8 @@ export default function PlacePage() {
             {place.photos?.[0] && (
               <div>
                 <img
-                  className="object-cover aspect-square"
+                  onClick={() => setShowAllPhotos(true)}
+                  className="object-cover aspect-square cursor-pointer"
                   src={"http://localhost:3000/uploads/" + place.photos[0]}
                   alt={place.title}
                 />
@@ -107,7 +109,8 @@ export default function PlacePage() {
           <div className="grid">
             {place.photos?.[1] && (
               <img
-                className="object-cover aspect-square"
+                onClick={() => setShowAllPhotos(true)}
+                className="object-cover aspect-square cursor-pointer"
                 src={"http://localhost:3000/uploads/" + place.photos[1]}
                 alt={place.title}
               />
@@ -115,7 +118,8 @@ export default function PlacePage() {
             {place.photos?.[2] && (
               <div className="overflow-hidden">
                 <img
-                  className="object-cover aspect-square relative top-2"
+                  onClick={() => setShowAllPhotos(true)}
+                  className="object-cover aspect-square relative top-2 cursor-pointer"
                   src={"http://localhost:3000/uploads/" + place.photos[2]}
                   alt={place.title}
                 />
@@ -129,6 +133,28 @@ export default function PlacePage() {
         >
           Show More Photos
         </button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] mb-8 mt-8 gap-8">
+        <div>
+          <div className="my-4">
+            <h2 className="font-semibold text-2xl">Description</h2>
+            {place.description}
+          </div>
+          Check-in: {place.checkIn} <br />
+          Check-out: {place.checkOut} <br />
+          Max guests: {place.maxGuests}
+        </div>
+        <div>
+          <BookingWidget place={place} />
+        </div>
+      </div>
+      <div className="bg-white -mx-8 px-8 py-8 border-t">
+        <div>
+          <h2 className="font-semibold text-2xl">Extra Info</h2>
+        </div>
+        <div className="mb-4 mt-2 text-sm text-gray-700 leading-6">
+          {place.extraInfo}
+        </div>
       </div>
     </div>
   );
