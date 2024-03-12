@@ -62,7 +62,7 @@ export default function PlacePage() {
   }
 
   return (
-    <div className="mt-4 bg-gray-100 -m-8 pt-8">
+    <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
       <h1 className="text-3xl">{place.title}</h1>
       <a
         className="flex gap-1 font-semibold underline my-3"
