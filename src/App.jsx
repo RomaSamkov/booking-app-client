@@ -10,6 +10,8 @@ import AccountPage from "./pages/AccountPage";
 import PlacesPage from "./pages/PlacesPage";
 import PlacesFormPage from "./pages/PlacesFormPage";
 import PlacePage from "./pages/PlacePage";
+import BookingsPage from "./pages/BookingsPage";
+import BookingPlacePage from "./pages/BookingPlacePage";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -29,6 +31,8 @@ function App() {
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
           <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/account/bookings" element={<BookingsPage />} />
+          <Route path="/account/bookings/:id" element={<BookingPlacePage />} />
         </Route>
       </Routes>
     </UserContextProvider>
