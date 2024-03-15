@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 export default function PlaceGallery({ place }) {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
 
@@ -33,11 +35,7 @@ export default function PlaceGallery({ place }) {
           {place?.photos?.length > 0 &&
             place.photos.map((photo) => (
               <div key={new Date().getTime()}>
-                <img
-                  className=""
-                  src={"http://localhost:3000/uploads/" + photo}
-                  alt=""
-                />
+                <img className="" src={`${baseUrl}/uploads/` + photo} alt="" />
               </div>
             ))}
         </div>
@@ -53,7 +51,7 @@ export default function PlaceGallery({ place }) {
               <img
                 onClick={() => setShowAllPhotos(true)}
                 className="object-cover aspect-square cursor-pointer"
-                src={"http://localhost:3000/uploads/" + place.photos[0]}
+                src={`${baseUrl}/uploads/` + place.photos[0]}
                 alt={place.title}
               />
             </div>
@@ -64,7 +62,7 @@ export default function PlaceGallery({ place }) {
             <img
               onClick={() => setShowAllPhotos(true)}
               className="object-cover aspect-square cursor-pointer"
-              src={"http://localhost:3000/uploads/" + place.photos[1]}
+              src={`${baseUrl}/uploads/` + place.photos[1]}
               alt={place.title}
             />
           )}
@@ -73,7 +71,7 @@ export default function PlaceGallery({ place }) {
               <img
                 onClick={() => setShowAllPhotos(true)}
                 className="object-cover aspect-square relative top-2 cursor-pointer"
-                src={"http://localhost:3000/uploads/" + place.photos[2]}
+                src={`${baseUrl}/uploads/` + place.photos[2]}
                 alt={place.title}
               />
             </div>
