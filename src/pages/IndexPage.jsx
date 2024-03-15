@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 export default function IndexPage() {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function IndexPage() {
               {place.photos?.[0] && (
                 <img
                   className="border mb-2 rounded-2xl object-cover aspect-square"
-                  src={"http://localhost:3000/uploads/" + place.photos?.[0]}
+                  src={`${baseUrl}/uploads/` + place.photos?.[0]}
                 ></img>
               )}
             </div>
