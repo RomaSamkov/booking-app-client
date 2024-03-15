@@ -1,3 +1,5 @@
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 export default function PlaceImg({ place, index = 0, className = null }) {
   if (!place?.photos.length) {
     return "";
@@ -9,7 +11,7 @@ export default function PlaceImg({ place, index = 0, className = null }) {
     <div>
       <img
         className={className}
-        src={"http://localhost:3000/uploads/" + place.photos[index]}
+        src={`${baseUrl}/uploads/` + place.photos[index]}
         alt={place.title}
       />
     </div>
