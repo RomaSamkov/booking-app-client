@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 export default function PhotosUploader({ addedPhotos, onChange }) {
   const [photoLink, setPhotoLink] = useState("");
   async function addPhotoByLink(e) {
@@ -67,7 +69,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
             <div className="flex h-32 relative" key={link}>
               <img
                 className="rounded-2xl w-full object-cover"
-                src={"http://localhost:3000/uploads/" + link}
+                src={`${baseUrl}/uploads/` + link}
                 alt=""
               />
               <button
